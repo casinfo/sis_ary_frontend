@@ -1,6 +1,10 @@
 import { Api } from "../../services/api";
 import { IUser } from "./types";
 
+interface Token {
+  permissions: string[];
+}
+
 export function setUserLocalStorage(user: IUser | null) {
   localStorage.setItem("#u", JSON.stringify(user));
 }
@@ -27,4 +31,19 @@ export async function LoginRequest(
   } catch (error) {
     throw error;
   }
+}
+
+export function getPermissionsFromToken(): string[] | null {
+  const user = getUserLocalStorage();
+
+  if (user && user.token) {
+    try {
+      const token = JSON.parse(atob(user.token.split(".")[1])) as Token;
+      return token.permissions || [];
+    } catch (error) {
+      console.error("Erro ao decodificar o token:", error);
+    }
+  }
+
+  return null;
 }
