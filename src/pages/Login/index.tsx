@@ -78,7 +78,7 @@ export function Login() {
 
       if (loginSuccess) {
         toast.success("Login bem-sucedido!");
-        navigate("/");
+        navigate("/dashboard");
       } else {
         toast.error("Usuário ou senha incorretos.");
       }

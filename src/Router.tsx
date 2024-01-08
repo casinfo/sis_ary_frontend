@@ -6,8 +6,9 @@ import { ProtectedLayout } from "./components/ProtectedLayout";
 export function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<Home/>} />
       <Route
         path="/profile"
         element={
