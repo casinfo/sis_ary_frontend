@@ -13,5 +13,8 @@ export default defineConfig(({ mode }) => {
       "process.env": JSON.stringify(env),
     },
     plugins: [react()],
+    server: {
+      port: 8080, // definir a porta para 8080
+    },
   };
 });

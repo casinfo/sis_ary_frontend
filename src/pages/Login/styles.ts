@@ -8,13 +8,17 @@ export const Container = styled.div`
 `;
 
 export const LoginContainer = styled.div`
-  width: 40%;
+  width: 100%; ///40%
   padding: 32px;
   background: ${(props) => props.theme["gray-300"]};
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media (min-width: 768px) {
+    width: 40%;
+  }
 `;
 
 export const FormContainer = styled.div`
@@ -93,11 +97,18 @@ export const UserInput = styled(BaseInput)``;
 export const PasswordInput = styled(BaseInput)``;
 
 export const ContainerImage = styled.div`
-  width: 60%;
+  //width: 60%;
   padding: 32px;
   background: url(${bgImage}) no-repeat;
   background-size: cover;
   background-position: center;
+
+  display: none;
+
+  @media (min-width: 768px) {
+    width: 60%;
+    display: block; /* Exibir em telas maiores que 768px */
+  }
 `;
 
 export const ButtonComponent = styled.button`
