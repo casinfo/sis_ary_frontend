@@ -1,21 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
+import { Dashboard } from "./pages/Dashboard";
 import { Login } from "./pages/Login";
 import { ProtectedLayout } from "./components/ProtectedLayout";
 import { Layout } from "./components/Layout";
 import { Menu } from "./pages/Menu";
+import { Logout } from "./pages/Logout";
 
 export function RoutesForPages() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="*" element={<Login />} />
-
       <Route
         path="/"
         element={
           <Layout>
-            <Home />
+            <Dashboard />
           </Layout>
         }
       />
@@ -24,7 +22,7 @@ export function RoutesForPages() {
         path="/dashboard"
         element={
           <Layout>
-            <Home />
+            <Dashboard />
           </Layout>
         }
       />
@@ -39,6 +37,9 @@ export function RoutesForPages() {
           </ProtectedLayout>
         }
       />
+      <Route path="/login" element={<Login />} />
+      <Route path="/logout" element={<Logout />} />
+      <Route path="*" element={<Login />} />
     </Routes>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
   SDivider,
@@ -22,10 +22,65 @@ import { MdLogout, MdOutlineAnalytics } from "react-icons/md";
 import { BsPeople } from "react-icons/bs";
 
 import { iconAry } from "../../assets";
+import { getPermissionsFromToken } from "../../contexts/AuthProvider/util";
 
 export function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { pathname } = useLocation();
+  const [menuItems, setMenuItens] = useState<string[] | null>([]);
+
+  useEffect(() => {
+    const permissions = getPermissionsFromToken();
+    setMenuItens(permissions);
+  }, []);
+
+  const linksArray = [
+    {
+      id: "DASHBOARD",
+      label: "Dashboard",
+      icon: <AiOutlineHome />,
+      to: "/",
+      notification: 0,
+    },
+    {
+      id: "FINANCEIRO",
+      label: "Financeiro",
+      icon: <MdOutlineAnalytics />,
+      to: "/Financeiro",
+      notification: 0,
+    },
+    {
+      id: "BACKOFFICE",
+      label: "BackOffice",
+      icon: <BsPeople />,
+      to: "/profile",
+      notification: 0,
+    },
+    {
+      id: "OPERACAO",
+      label: "Operações",
+      icon: <AiOutlineApartment />,
+      to: "/diagrams",
+      notification: 0,
+    },
+  ];
+
+  const secondaryLinksArray = [
+    {
+      label: "Admin",
+      icon: <AiOutlineSetting />,
+      to: "/admin",
+    },
+    {
+      label: "Logout",
+      icon: <MdLogout />,
+      to: "/logout",
+    },
+  ];
+
+  const filteredLinksArray = linksArray.filter((link) =>
+    menuItems?.includes(link.id)
+  );
 
   return (
     <SSidebar
@@ -44,7 +99,7 @@ export function Sidebar() {
         <img src={iconAry} alt="logo" />
       </SLogo>
       <SDivider />
-      {linksArray.map(({ icon, label, notification, to }) => (
+      {filteredLinksArray.map(({ icon, label, notification, to }) => (
         <SLinkContainer key={label} isActive={pathname === to}>
           <SLink to={to} style={!sidebarOpen ? { width: `fit-content` } : {}}>
             <SLinkIcon>{icon}</SLinkIcon>
@@ -71,43 +126,3 @@ export function Sidebar() {
     </SSidebar>
   );
 }
-
-const linksArray = [
-  {
-    label: "Home",
-    icon: <AiOutlineHome />,
-    to: "/",
-    notification: 0,
-  },
-  {
-    label: "Statistics",
-    icon: <MdOutlineAnalytics />,
-    to: "/statistics",
-    notification: 0,
-  },
-  {
-    label: "Customers",
-    icon: <BsPeople />,
-    to: "/profile",
-    notification: 0,
-  },
-  {
-    label: "Diagrams",
-    icon: <AiOutlineApartment />,
-    to: "/diagrams",
-    notification: 0,
-  },
-];
-
-const secondaryLinksArray = [
-  {
-    label: "Settings",
-    icon: <AiOutlineSetting />,
-    to: "/settings",
-  },
-  {
-    label: "Logout",
-    icon: <MdLogout />,
-    to: "/logout",
-  },
-];
