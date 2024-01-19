@@ -16,6 +16,7 @@ import {
   AiOutlineApartment,
   AiOutlineHome,
   AiOutlineLeft,
+  AiOutlineRight,
   AiOutlineSetting,
 } from "react-icons/ai";
 import { MdLogout, MdOutlineAnalytics } from "react-icons/md";
@@ -27,6 +28,7 @@ import { getPermissionsFromToken } from "../../contexts/AuthProvider/util";
 export function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { pathname } = useLocation();
+
   const [menuItems, setMenuItens] = useState<string[] | null>([]);
 
   useEffect(() => {
@@ -92,7 +94,7 @@ export function Sidebar() {
           isOpen={sidebarOpen}
           onClick={() => setSidebarOpen((p) => !p)}
         >
-          <AiOutlineLeft />
+          {sidebarOpen ? <AiOutlineLeft /> : <AiOutlineRight />}
         </SSidebarButton>
       </>
       <SLogo>
