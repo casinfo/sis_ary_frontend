@@ -48,14 +48,14 @@ export function Sidebar() {
       id: "FINANCEIRO",
       label: "Financeiro",
       icon: <MdOutlineAnalytics />,
-      to: "/Financeiro",
+      to: "/financeiro",
       notification: 0,
     },
     {
       id: "BACKOFFICE",
       label: "BackOffice",
       icon: <BsPeople />,
-      to: "/profile",
+      to: "/back-office",
       notification: 0,
     },
     {

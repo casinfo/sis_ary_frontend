@@ -3,7 +3,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { Login } from "./pages/Login";
 import { ProtectedLayout } from "./components/ProtectedLayout";
 import { Layout } from "./components/Layout";
-import { Menu } from "./pages/Menu";
+import { Users } from "./pages/Users";
 import { Logout } from "./pages/Logout";
 
 export function RoutesForPages() {
@@ -28,11 +28,11 @@ export function RoutesForPages() {
       />
 
       <Route
-        path="/profile"
+        path="/back-office"
         element={
           <ProtectedLayout>
             <Layout>
-              <Menu />
+              <Users />
             </Layout>
           </ProtectedLayout>
         }

@@ -30,5 +30,3 @@ export const defaultTheme = {
   "yellow-500": "#FBA94C",
   "yellow-600": "#E7B10A",
 };
-
-export const themeAry = {};
