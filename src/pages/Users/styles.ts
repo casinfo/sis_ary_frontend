@@ -1,13 +1,5 @@
-import Card from "@mui/material/Card";
-
 import styled from "styled-components";
 import { btnReset } from "../../styles/variables";
-
-export const CardContainer = styled(Card)`
-  padding: 16px;
-  margin: 64px;
-  width: 60vw;
-`;
 
 export const BoxContainer = styled.div`
   display: flex;

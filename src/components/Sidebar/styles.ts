@@ -15,7 +15,7 @@ export const SSidebar = styled.div<isOpenProps>`
   background: ${({ theme }) => theme["white-100"]};
 
   height: 100vh;
-  padding: ${V.lgSpacing};
+  padding: ${V.mdSpacing};
 
   position: relative;
 `;
@@ -27,7 +27,7 @@ export const SSidebarButton = styled.button<isOpenProps>`
   right: ${(isOpen) => (isOpen ? `-16px` : `-40px`)};
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: ${V.borderRadiusMid};
   background: ${({ theme }) => theme["white-100"]};
   box-shadow: 0 0 4px ${({ theme }) => theme["gray-200"]},
     0 0 7px ${({ theme }) => theme["gray-300"]};
